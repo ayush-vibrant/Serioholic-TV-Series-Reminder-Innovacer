@@ -10,3 +10,15 @@ Please find the problem statement [here](https://www.innovaccer.com/media/hacker
 * Aforementioned script requires email address and list of favourite TV series for multiple users as input. The prompt is as follows: <br />
 Email address: abc.123@xyz.com <br />
 TV Series: Game of thrones, suits, friends, black mirror, gotham <br />
+* The script (database.py) stores the input data in `series` table in MySQLdb named `mydatabase`. <br />
+* A single email is sent to the input email address with all the
+appropriate response for every TV series. The content of the mail 
+depends on the following use cases:
+1. Exact date is mentioned for next episode.
+2. Only year is mentioned for next season.
+3. All the seasons are finished and no further details are available. <br />
+
+Below picture shows the sample automated e-mail response.
+<img src="https://github.com/ayush-vibrant/Serioholic-TV-Series-Reminder-Innovacer/blob/master/Images/email_response.png" width=50% height=50% />
+
+
