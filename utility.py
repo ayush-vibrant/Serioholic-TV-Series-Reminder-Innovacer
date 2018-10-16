@@ -58,8 +58,8 @@ def sendmail(email_id, email_body):
         conn.login(USERNAME, config.PASSWORD)
         try:
             conn.sendmail(sender, destination, msg.as_string())
-            print 'Please Check your Inbox!\n'
+            print('Please Check your Inbox!\n')
         finally:
             conn.quit()
     except:
-        print "Failed to send email; %s" % "CUSTOM_ERROR" 
+        print("Failed to send email; %s" % "CUSTOM_ERROR")

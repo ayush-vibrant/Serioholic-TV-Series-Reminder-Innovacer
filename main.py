@@ -1,17 +1,20 @@
 # coding: utf-8
-import urllib2
 from bs4 import BeautifulSoup
 import re
 import json
 import datetime
 import database
 import utility as ut
+try:
+    import urllib2
+except ImportError:
+    import urllib.request as urllib2
 
 omdb_apikey = '869dbe88'
 
 def main():
     print("----------------------Hackercamp'19----------------------")
-    print "\n"
+    print('\n')
     print("SERIOHOLIC: Quench your thirst of binge watching.")
     print(2*"\n")
 
@@ -22,13 +25,13 @@ def main():
         email_id = raw_input(('Email address: '))
     tvSeriesString = raw_input(('TV Series: '))
     for_template = tvSeriesString 
-    print '\n' 
+    print ('\n')
 
     try:
         database.add_to_db(email_id,tvSeriesString)
-        print 'Your preferences has been recoded in Database.\n'
+        print('Your preferences has been recoded in Database.\n')
     except:
-        print 'Failed to add preferences in Database.\n'
+        print('Failed to add preferences in Database.\n')
 
     li = [ut.urlify(x.strip()) for x in tvSeriesString.split(',')]
     message = []
@@ -36,7 +39,7 @@ def main():
     for i in li:
         ID = ut.omdb_search(i)
         if(ID == -1):
-            print 'No search results found!'
+            print('No search results found!')
         else:
             imdb_url = ut.imdb_search(ID)
             response = urllib2.urlopen(imdb_url)
@@ -48,7 +51,7 @@ def main():
                 a = str(i.text).replace("\n","").strip().replace(".","")
                 airdate_box.append(a)
 
-            airdate_box[:] = [item for item in airdate_box if item != '']\
+            airdate_box[:] = [item for item in airdate_box if item != '']
             today_date = datetime.datetime.now()
 
             for i in airdate_box:
@@ -107,7 +110,7 @@ def main():
     email_body = ''
     for i in range(len(message)):
         email_body += 'Tv series name: ' + str(shows_name[i].title()) + '\n' + "Status: " + str(message[i]) + '\n' + '\n'
-    print email_body
+    print(email_body)
     ut.sendmail(email_id, email_body)
             
 
