@@ -1,4 +1,5 @@
 # coding: utf-8
+import config
 from bs4 import BeautifulSoup
 import re
 import json
@@ -6,6 +7,9 @@ import datetime
 import database
 import utility as ut
 import urllib2
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 
 
 omdb_apikey = '869dbe88'
