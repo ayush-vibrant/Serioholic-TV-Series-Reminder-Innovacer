@@ -28,5 +28,4 @@ def add_to_db(email_id, tvSeriesString):
     db_util.db.commit()
     #print '----Entries recorded in DB----'
 
-    # Close the connection
     db_util.db.close()

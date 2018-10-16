@@ -16,30 +16,25 @@ def urlify(s):
 
 def imdb_search(ID) :
     base_url = 'https://www.imdb.com/title/'+ID+'/'
-    # numberOfSeasons = find_season(ID).text
     r = urllib2.urlopen(base_url)
     soup = BeautifulSoup(r,'html5lib')
     
     for element in soup.find_all('div',{'class':'seasons-and-year-nav'}):
-        x = element.find_all('div')[2] # replaced 2 with 3, can not do that because if 
-        # new seasons were announced before this year's got over
+        x = element.find_all('div')[2]
         url = x.find('a').get('href')
     final_url = "https://www.imdb.com" + url         
     return final_url
 
 
 def omdb_search(name):
-    # name is 'game of thrones' corresponding string url 'game+of+thrones'
     base_url = 'http://www.omdbapi.com/?apikey=869dbe88&&type=series&t='
-    omdb_url = base_url + name + '&plot=full' # returns json is independent of TV series namecase
-    # print omdb_url
+    omdb_url = base_url + name + '&plot=full'
     json_obj = urllib2.urlopen(omdb_url)
     data = json.load(json_obj)
     response = data['Response']
 
     if response == u'True': # comparing unicode and bool values.
         imdbID = data['imdbID']
-        #totalSeasons = data['totalSeasons']
         return imdbID
     else:
         return -1
