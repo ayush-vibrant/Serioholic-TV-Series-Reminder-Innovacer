@@ -5,10 +5,8 @@ import json
 import datetime
 import database
 import utility as ut
-try:
-    import urllib2
-except ImportError:
-    import urllib.request as urllib2
+import urllib2
+
 
 omdb_apikey = '869dbe88'
 
