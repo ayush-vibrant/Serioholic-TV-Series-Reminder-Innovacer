@@ -18,7 +18,7 @@ depends on the following use cases:
 2. Only year is mentioned for next season.
 3. All the seasons are finished and no further details are available. <br />
 
-> Below picture shows the sample automated e-mail response. <br />
+> Below picture shows the sample e-mail response genereated by the `utility.py`. <br />
 <img src="https://github.com/ayush-vibrant/Serioholic-TV-Series-Reminder-Innovacer/blob/master/Images/email_response.png"  />
 
 
